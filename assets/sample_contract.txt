@@ -1,0 +1,22 @@
+This Software License Agreement ("Agreement") is entered into on January 1, 2024, between TechCorp Inc. ("Company") and Client Corp ("Client").
+
+1. PAYMENT TERMS
+Client agrees to pay the license fee of $50,000 within thirty (30) days of invoice date. Late payments will incur a penalty of 1.5% per month on the outstanding amount.
+
+2. TERMINATION
+Either party may terminate this Agreement upon sixty (60) days written notice. Upon termination, Client must cease all use of the software and return all materials.
+
+3. LIABILITY
+Company's total liability under this Agreement shall not exceed the total amount paid by Client. In no event shall Company be liable for indirect or consequential damages.
+
+4. INTELLECTUAL PROPERTY
+All intellectual property rights in the software remain with Company. Client receives only a license to use, not ownership.
+
+5. CONFIDENTIALITY
+Both parties agree to maintain confidentiality of proprietary information for a period of five (5) years after termination.
+
+6. WARRANTIES
+Company warrants that the software will perform substantially in accordance with the documentation. Client's sole remedy for breach of warranty is software repair or replacement.
+
+7. FORCE MAJEURE
+Neither party shall be liable for delays or failures in performance resulting from acts beyond their reasonable control, including natural disasters, war, or government action.
