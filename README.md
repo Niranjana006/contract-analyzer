@@ -24,18 +24,26 @@ AI-powered contract analysis tool that extracts key terms, obligations, and risk
 ## 🛠 Tech Stack
 
 Frontend: Streamlit 1.49.1
+
 Backend: Python 3.11
+
 NLP: Transformers + HuggingFace
+
 PDF: PyPDF2, python-docx
+
 Data: pandas, numpy
+
 Deploy: Streamlit Cloud
 
 
 ## 🚀 Quick Start (Local)
 
 git clone https://github.com/niranjana006/contract-analyzer.git
+
 cd contract-analyzer
+
 pip install -r requirements.txt
+
 streamlit run minimal_app.py
 
 📈 Performance
