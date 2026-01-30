@@ -227,10 +227,10 @@ def main():
                     try:
                         with st.spinner("Finding answer..."):
                             global QA_MODEL
-                            result = QA_MODEL({
-                                'question': question,
-                                'context': st.session_state.contract_text
-                            })
+                            result = QA_MODEL(
+                                question=question, 
+                                context=st.session_state.contract_text
+                            )
                             
                             st.success(f"**Answer:** {result['answer']}")
                             st.info(f"**Confidence:** {result['score']:.1%}")
