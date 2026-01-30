@@ -9,9 +9,16 @@ import pandas as pd
 import re
 from datetime import datetime
 
-# Simple global variables to avoid caching issues
-QA_MODEL = None
-CLASSIFICATION_MODEL = None
+@st.cache_resource
+def get_qa_pipeline():
+    """Load QA model once - cached"""
+    from transformers import pipeline
+    return pipeline(
+        "question-answering",
+        model="distilbert/distilbert-base-cased-distilled-squad"
+    )
+
+
 
 # Page config
 st.set_page_config(
@@ -54,20 +61,7 @@ if 'contract_text' not in st.session_state:
 if 'qa_history' not in st.session_state:
     st.session_state.qa_history = []
 
-def load_models():
-    """Load models without caching"""
-    global QA_MODEL, CLASSIFICATION_MODEL
-    
-    try:
-        if QA_MODEL is None:
-            from transformers import pipeline
-            QA_MODEL = pipeline("question-answering", model="distilbert-base-cased-distilled-squad")
-            st.success("✅ QA Model loaded!")
-        return True
-    except Exception as e:
-        st.error(f"❌ Model loading failed: {e}")
-        st.info("Install with: pip install transformers torch")
-        return False
+
 
 def get_sample_contract():
     return """SOFTWARE LICENSE AGREEMENT
@@ -222,15 +216,18 @@ def main():
                     question = suggestion
             
             # Process question
+            
+
             if st.button("🔍 Get Answer") and question:
-                if load_models():
+                
                     try:
                         with st.spinner("Finding answer..."):
-                            global QA_MODEL
-                            result = QA_MODEL(
-                                question=question, 
-                                context=st.session_state.contract_text
-                            )
+                            qa_pipe = get_qa_pipeline()  # Cached pipeline
+            
+                            result = qa_pipe(
+                                 question=str(question),
+                                 context=str(st.session_state.contract_text)
+                             )
                             
                             st.success(f"**Answer:** {result['answer']}")
                             st.info(f"**Confidence:** {result['score']:.1%}")
@@ -245,8 +242,8 @@ def main():
                             
                     except Exception as e:
                         st.error(f"Error: {e}")
-                else:
-                    st.error("Models not available")
+            
+                
             
             # Show history
             if st.session_state.qa_history:
